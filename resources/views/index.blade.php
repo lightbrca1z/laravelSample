@@ -7,14 +7,19 @@
     <link rel="stylesheet" href="{{ url('style.css') }}">
 </head>
 <body>
-<div class="container">
-<h1>Posts</h1>
-<ul>
-    <li>Post</li>
-    <li>Post</li>
-    <li>Post</li>
-    <li>Post</li>
-</ul>
-</div>
+    <main>
+        <h1>メッセージ</h1>
+        <form action="/messages" method="post">
+            @csrf
+            <input type="text" name="body">
+            <input type="submit" value="投稿">
+        </form>
+        <hr>
+        <ul>
+            @foreach($messages as $message)
+            <li>{{ $message->body }}</li>
+            @endforeach
+        </ul>
+    </main>
 </body>
 </html>
