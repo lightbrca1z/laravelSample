@@ -20,4 +20,19 @@ class MessageController extends Controller
         $message->save();
         return redirect('/messages');
     }
+
+    public function destroyAll()
+    {
+        Message::truncate();
+        return redirect('/messages');
+    }
+
+    public function destroy($id)
+    {
+        $message = Message::find($id);
+        if ($message) {
+            $message->delete();
+        }
+        return redirect('/messages');
+    }
 }
